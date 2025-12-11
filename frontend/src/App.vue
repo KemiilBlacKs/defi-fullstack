@@ -1,30 +1,33 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+	<v-app class="bg-background">
+		<v-app-bar flat color="transparent" class="px-4 mt-2">
+			<v-app-bar-title class="font-weight-bold text-h5 text-primary">
+				<v-icon icon="mdi-train" class="mr-2"></v-icon>
+				Défi Routage
+			</v-app-bar-title>
+			<v-spacer></v-spacer>
+			<v-btn to="/" class="mr-2" :class.active="$route.path === '/' ? 'bg-primary' : ''">Calculateur</v-btn>
+			<v-btn to="/stats" :class.active="$route.path === '/stats' ? 'bg-primary' : ''">Statistiques</v-btn>
+		</v-app-bar>
+
+		<v-main>
+			<v-container fluid class="py-8 px-6">
+				<v-fade-transition mode="out-in">
+					<router-view></router-view>
+				</v-fade-transition>
+			</v-container>
+		</v-main>
+	</v-app>
 </template>
 
+<script setup lang="ts">
+// Logique du layout si nécessaire
+</script>
+
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+@media (min-width: 1280px) {
+	.v-container {
+		min-width: 1200px;
+	}
 }
 </style>
